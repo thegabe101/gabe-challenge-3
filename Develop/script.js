@@ -1,15 +1,70 @@
 //initial thought is to create packages of possible input variables for password itself. not sure where to place this yet. 
+//i think creating this as an array is correct. if i create it as a string it will not be ready correctly.
 
-const lettersUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lettersLower = "abcdefghijklmnopqrstuvwxz";
-const specialSymbols = "!@#$%^&*";
-const numberPackage = "12334567890";
+const lettersUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+const lettersLower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','z'];
+const specialSymbols = ['!', '@', '#', '$', '%', '&'];
+const numberPackage = ['1','2','3','3','4','5','6','7','8','9','0'];
+
+var recordPasswordLength = 8;
+var possibleChoices = [];
 
 
 var generateBtn = document.querySelector("#generate");
 
+
+generateBtn.addEventListener("click", writePassword);
+
+function writePassword() {
+  var completedPrompts = userPreferences();
+
+  if (completedPrompts) {
+
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  }
+}
+
+
+
+
 //first need to create prompts for user desire re: parameters of password
 //do you want special chars, numbers, etc. 
+
+function userPreferences() {
+  //first going to try to prompt user for parameters desired in their password.
+  recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
+
+  if(recordPasswordLength >=8 || recordPasswordLength <=129) {
+    alert("Your password was within expected length parameters. Please continue.");
+} 
+console.log("Check if length parameters are correct");
+  /* not sure how to get this else statement to work. else { (recordPasswordLength <=7 || recordPasswordLength >=129)
+    alert("Your password was not within expected length parameters. Please try again.")
+  } */
+/*{
+  else alert("Your password is within expected length parameters.");
+}*/
+  if (confirm("Would you like to use special characters in your password?")) {
+      possibleChoices = possibleChoices.concat(specialSymbols);
+  }
+
+  if (confirm("Would you like to use numbers in your password?")) {
+      possibleChoices = possibleChoices.concat(numberPackage);
+  }
+
+  if (confirm("Would you like to use lowercase characters in your password?")) {
+      possibleChoices = possibleChoices.concat(lettersLower);
+  }
+
+  if (confirm("Would you like to use uppercase characters in your password?")) {
+      possibleChoices = possibleChoices.concat(lettersUpper);
+  }
+  return true;
+}
+
 //create variables for all possible desired entries
 //create password generator
 //seems primary task is to creat the function of the password generation itself
@@ -45,15 +100,3 @@ alert("You will now select the criteria for your password.");
 }
 
 */
-
-function (generatePassword)
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-generateBtn.addEventListener("click", writePassword);
