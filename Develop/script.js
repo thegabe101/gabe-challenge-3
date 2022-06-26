@@ -6,7 +6,7 @@ const lettersLower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o
 const specialSymbols = ['!', '@', '#', '$', '%', '&'];
 const numberPackage = ['1','2','3','3','4','5','6','7','8','9','0'];
 
-var recordPasswordLength = 8;
+var recordPasswordLength = 8-128;
 var possibleChoices = [];
 
 
@@ -45,14 +45,19 @@ function generatePassword() {
 //first need to create prompts for user desire re: parameters of password
 //do you want special chars, numbers, etc. 
 
+//going to create a function called by writePassword function once prompts are correctly input. 
+
 function userPreferences() {
   //first going to try to prompt user for parameters desired in their password.
   recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
 
-  if(recordPasswordLength <8 || recordPasswordLength >128) {
+  if (recordPasswordLength >=8 && recordPasswordLength <=128) {
     alert("Your password was within expected length parameters. Please continue.");
-    return false;
-} 
+  } else if (recordPasswordLength <8 || recordPasswordLength >128) {
+    alert("Your chosen password length did not fall within expected parameters. Please try again.");
+    return false
+  }
+ 
 console.log("Check if length parameters are correct");
   /* not sure how to get this else statement to work. else { (recordPasswordLength <=7 || recordPasswordLength >=129)
     alert("Your password was not within expected length parameters. Please try again.")
