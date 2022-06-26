@@ -10,6 +10,10 @@ var recordPasswordLength = 8;
 var possibleChoices = [];
 
 
+// 1. create variables for all possible desired entries
+// 2. create password generator
+// 3. seems primary task is to create the function of the password generation itself
+
 var generateBtn = document.querySelector("#generate");
 
 
@@ -20,14 +24,22 @@ function writePassword() {
 
   if (completedPrompts) {
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  
   }
 }
 
-
+function generatePassword() {
+  var password = "";
+  for (var i = 0; i < recordPasswordLength; i++) {
+    var letterRandom = Math.floor(Math.random() * possibleChoices.length); 
+    password = password + possibleChoices[letterRandom];
+  }
+  return password;
+}
 
 
 //first need to create prompts for user desire re: parameters of password
@@ -37,8 +49,9 @@ function userPreferences() {
   //first going to try to prompt user for parameters desired in their password.
   recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
 
-  if(recordPasswordLength >=8 || recordPasswordLength <=129) {
+  if(recordPasswordLength <8 || recordPasswordLength >128) {
     alert("Your password was within expected length parameters. Please continue.");
+    return false;
 } 
 console.log("Check if length parameters are correct");
   /* not sure how to get this else statement to work. else { (recordPasswordLength <=7 || recordPasswordLength >=129)
@@ -65,11 +78,8 @@ console.log("Check if length parameters are correct");
   return true;
 }
 
-//create variables for all possible desired entries
-//create password generator
-//seems primary task is to creat the function of the password generation itself
 
-/*
+/* initial attempts at prompts. got confused by what I was doing but didn't want to delete for future reference.
 
 function generatePassword() {
   console.log("This button seems to be working. Now I need to define the function.");
