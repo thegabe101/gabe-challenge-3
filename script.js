@@ -55,6 +55,7 @@ function userPreferences() {
 //the one issue I noticed here even after I'd thought I'd solved the problem is that if the user enters a letter, the generator does not detect it as invalid. How to solve this? Going Googling. 
     if(isNaN(recordPasswordLength)){
     alert("Your chosen password length must consist of a number ranging from 8-128. Please click the generate password button and try again.");
+    console.log("Return working. Function is terminated if an invalid input is determined.")
     return false
 //woohoo. this was the most satisfying line of code i've written in my 1.5 week career. it was pretty easy to find explanations of forums, as invalid entry character types is a common issue. in this case, the isNan command solved that issue. 
   } else if (recordPasswordLength >=8 && recordPasswordLength <=128) {
@@ -90,7 +91,7 @@ console.log("Check if length parameters are correct");
 }
 
 
-/* initial attempts at prompts. got confused by what I was doing but didn't want to delete for future reference.
+/* initial attempts at prompts. got confused by what I was doing but didn't want to delete for future reference. this code can be ignored but it was nice for me to look back on it upon finishing the project to see where i got misled. 
 
 function generatePassword() {
   console.log("This button seems to be working. Now I need to define the function.");
