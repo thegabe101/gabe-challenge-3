@@ -53,7 +53,11 @@ function userPreferences() {
   //first going to try to prompt user for parameters desired in their password.
   recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
 //the one issue I noticed here even after I'd thought I'd solved the problem is that if the user enters a letter, the generator does not detect it as invalid. How to solve this? Going Googling. 
-  if (recordPasswordLength >=8 && recordPasswordLength <=128) {
+    if(isNaN(recordPasswordLength)){
+    alert("Your chosen password length must consist of a number ranging from 8-128. Please click the generate password button and try again.");
+    return false
+//woohoo. this was the most satisfying line of code i've written in my 1.5 week career. it was pretty easy to find explanations of forums, as invalid entry character types is a common issue. in this case, the isNan command solved that issue. 
+  } else if (recordPasswordLength >=8 && recordPasswordLength <=128) {
     alert("Your password was within expected length parameters. Please continue.");
   } else if (recordPasswordLength <8 || recordPasswordLength >128) {
     alert("Your chosen password length did not fall within expected parameters. Please try again.");
