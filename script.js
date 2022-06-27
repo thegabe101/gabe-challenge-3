@@ -21,11 +21,13 @@ var generateBtn = document.querySelector("#generate");
 
 generateBtn.addEventListener("click", writePassword);
 
+//this part is somewhat straightforward, although I was confused by passwordText.value for some time.
+//if userPreferences (27) is returned as true, that allows the if statement to be executed and generatePassword to follow, which could eventually assign a value to the password variable and be written into the text area.
 function writePassword() {
   var completedPrompts = userPreferences();
 
   if (completedPrompts) {
-
+    console.log("userPreferences executed truthly. Password will now be generated.")
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
 
@@ -34,9 +36,12 @@ function writePassword() {
   }
 }
 
+//the generatePassword function was mostly not too challenging to write.
+
 function generatePassword() {
   var password = "";
   for (var i = 0; i < recordPasswordLength; i++) {
+    //possible.Choices generated from length string property.
     var letterRandom = Math.floor(Math.random() * possibleChoices.length); 
     password = password + possibleChoices[letterRandom];
   }
