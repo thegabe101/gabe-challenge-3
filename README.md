@@ -3,9 +3,10 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Installation]
-- [Credits]
-- [Usage]
+- [Installation](#installation)
+- [Credits](#credits)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
 
 ## Description
 
@@ -28,7 +29,7 @@ This project involved creating a password generator that could create a complete
 
 -Using this website is straightforward. Once the page loads, click the "Generate Password" button, and a series of prompts asking about length, special characters, and other things you want in your password (or don't) will pop up. Once you complete the prompts, the generator will give you a password in the text-box that can be copy/pasted and used at your discretion.
 
-## Screenshot
+## Screenshots
 
 - ![Alt= Screenshot showing landing page](Screenshot%201.jpg)
 - ![Alt= Screenshot showing prompts that pop up](Screenshot%202.jpg)
