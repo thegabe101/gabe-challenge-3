@@ -1,6 +1,12 @@
-//initial thought is to create packages of possible input variables for password itself. not sure where to place this yet. 
-//i think creating this as an array is correct. if i create it as a string it will not be ready correctly.
+// 1. create variables for all possible desired entries
+// 2. create password generator
+// 3. seems primary task is to create the function of the password generation itself
 
+//initial thought is to create packages of possible input variables for password itself. not sure where to place this yet. 
+//i think creating this as an array is correct. this way var possibleChoices can be called as a single variable in my generatePassword function from which individual items will be concatonated from each type of array and computed within the function. 
+
+
+//these are the my arrays of items. i struggled with a fast way to type these out. 
 const lettersUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 const lettersLower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','z'];
 const specialSymbols = ['!', '@', '#', '$', '%', '&'];
@@ -9,11 +15,7 @@ const numberPackage = ['1','2','3','3','4','5','6','7','8','9','0'];
 var recordPasswordLength = 8-128;
 var possibleChoices = [];
 
-
-// 1. create variables for all possible desired entries
-// 2. create password generator
-// 3. seems primary task is to create the function of the password generation itself
-
+//don't think i need to change this. this is just the the variable that when invoked will grab the first instance of "#generate" from HTML, which, the event listener will give a value of click, to which writePassword will be called. 
 var generateBtn = document.querySelector("#generate");
 
 
@@ -50,7 +52,7 @@ function generatePassword() {
 function userPreferences() {
   //first going to try to prompt user for parameters desired in their password.
   recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
-
+//the one issue I noticed here even after I'd thought I'd solved the problem is that if the user enters a letter, the generator does not detect it as invalid. How to solve this? Going Googling. 
   if (recordPasswordLength >=8 && recordPasswordLength <=128) {
     alert("Your password was within expected length parameters. Please continue.");
   } else if (recordPasswordLength <8 || recordPasswordLength >128) {
