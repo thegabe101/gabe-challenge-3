@@ -5,6 +5,7 @@
 //initial thought is to create packages of possible input variables for password itself. not sure where to place this yet. 
 //i think creating this as an array is correct. this way var possibleChoices can be called as a single variable in my generatePassword function from which individual items will be concatonated from each type of array and computed within the function. 
 
+//question about looping through a string 
 
 //these are the my arrays of items. i struggled with a fast way to type these out. 
 const lettersUpper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -12,6 +13,8 @@ const lettersLower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o
 const specialSymbols = ['!', '@', '#', '$', '%', '&'];
 const numberPackage = ['1','2','3','3','4','5','6','7','8','9','0'];
 
+
+//the range on this variable was unecessary, as I learned from tutor. The math function in the else if statements was all that was necessary.
 var recordPasswordLength = 8-128;
 var possibleChoices = [];
 
@@ -55,13 +58,15 @@ function generatePassword() {
 //going to create a function called by writePassword function once prompts are correctly input. 
 
 function userPreferences() {
+  possibleChoices = [];
   //first going to try to prompt user for parameters desired in their password.
   recordPasswordLength = prompt("Please state your password length. Your password must be between 8-128 total characters.");
 //the one issue I noticed here even after I'd thought I'd solved the problem is that if the user enters a letter, the generator does not detect it as invalid. How to solve this? Going Googling. 
     if(isNaN(recordPasswordLength)){
     alert("Your chosen password length must consist of a number ranging from 8-128. Please click the generate password button and try again.");
     console.log("Return working. Function is terminated if an invalid input is determined.")
-    return false
+    //originally had return false here, but found out just "return" was suitable. still returns the user if they input something improper. 
+    return
 //woohoo. this was the most satisfying line of code i've written in my 1.5 week career. it was pretty easy to find explanations of forums, as invalid entry character types is a common issue. in this case, the isNan command solved that issue. 
   } else if (recordPasswordLength >=8 && recordPasswordLength <=128) {
     alert("Your password was within expected length parameters. Please continue.");
@@ -79,18 +84,22 @@ console.log("Check if length parameters are correct");
 }*/
   if (confirm("Would you like to use special characters in your password?")) {
       possibleChoices = possibleChoices.concat(specialSymbols);
+      console.log(possibleChoices);
   }
 
   if (confirm("Would you like to use numbers in your password?")) {
       possibleChoices = possibleChoices.concat(numberPackage);
+      console.log(possibleChoices);
   }
 
   if (confirm("Would you like to use lowercase characters in your password?")) {
       possibleChoices = possibleChoices.concat(lettersLower);
+      console.log(possibleChoices);
   }
 
   if (confirm("Would you like to use uppercase characters in your password?")) {
       possibleChoices = possibleChoices.concat(lettersUpper);
+      console.log(possibleChoices);
   }
   return true;
 }
